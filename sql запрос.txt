@@ -1,0 +1,26 @@
+Вывод всех записей сотрудников с полем руководитель, и сортировкой по руководителю
+
+SELECT Employee.Name, Managers.Name
+FROM Employee, Managers
+WHERE Managers.Id = Employee.ManagerId ORDER BY Managers.Name
+
+
+
+
+Вывод списка всех руководителей и количество подчиненных
+
+SELECT Managers.Name, COUNT(Employee.ManagerId)
+From Managers JOIN Employee
+ON Managers.Id = Employee.ManagerId
+GROUP BY Managers.Name
+
+
+
+
+Вывод списка всех руководителей и количество подчиненных с сортировкой от большего к меньшему
+
+SELECT Managers.Name, COUNT(Employee.ManagerId) AS 'Колличество сотрудников'
+From Managers JOIN Employee
+ON Managers.Id = Employee.ManagerId
+GROUP BY Managers.Name
+ORDER BY 'Колличество сотрудников' DESC
